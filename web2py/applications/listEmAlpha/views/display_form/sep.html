@@ -1,0 +1,17 @@
+{{extend 'layout.html'}}
+<h2>Input form</h2>
+
+{{=form.custom.begin}}
+Category: <div>{{=form.custom.widget.adCategoryId}}</div>
+Location: <div>{{=form.custom.widget.adLocationId}}</div>
+User: <div>{{=form.custom.widget.endUserId}}</div>
+Title: <div>{{=form.custom.widget.adTitle}}</div>
+Email: <div>{{=form.custom.widget.email}}</div>
+Phone: <div>{{=form.custom.widget.phone_number}}</div>
+Description: <div>{{=form.custom.widget.adDesc}}</div>
+Price: <div>{{=form.custom.widget.adPrice}}</div>
+Valid: <div>{{=form.custom.widget.isAdValid}}</div>
+{{=form.custom.submit}}
+{{=form.custom.end}}
+<h2>Submitted variables</h2>
+{{=BEAUTIFY(request.vars)}}

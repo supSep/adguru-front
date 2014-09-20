@@ -1,0 +1,9 @@
+-r requirements.txt
+
+coverage
+coveralls
+docutils
+mock
+nose
+sphinx
+tox

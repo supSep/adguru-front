@@ -1,0 +1,6 @@
+{{extend 'layout.html'}}
+{{=form}}
+{{=count}}
+{{if searchresults:}}
+    {{=SQLTABLE(searchresults)}}
+{{pass}}

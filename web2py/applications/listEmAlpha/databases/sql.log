@@ -1,0 +1,105 @@
+timestamp: 2014-08-10T21:57:09.066733
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    city VARCHAR(512),
+    zip VARCHAR(512),
+    phone VARCHAR(512),
+    score DOUBLE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-08-10T21:57:09.735951
+CREATE TABLE auth_group(
+    id INT AUTO_INCREMENT NOT NULL,
+    role VARCHAR(512),
+    description LONGTEXT,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-08-10T21:57:10.778813
+CREATE TABLE auth_membership(
+    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INT, INDEX group_id__idx (group_id), FOREIGN KEY (group_id) REFERENCES auth_group (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-08-10T21:57:13.069612
+CREATE TABLE auth_permission(
+    id INT AUTO_INCREMENT NOT NULL,
+    group_id INT, INDEX group_id__idx (group_id), FOREIGN KEY (group_id) REFERENCES auth_group (id) ON DELETE CASCADE,
+    name VARCHAR(512),
+    table_name VARCHAR(512),
+    record_id INT,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-08-10T21:57:15.359394
+CREATE TABLE auth_event(
+    id INT AUTO_INCREMENT NOT NULL,
+    time_stamp DATETIME,
+    client_ip VARCHAR(512),
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin VARCHAR(512),
+    description LONGTEXT,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-08-10T21:57:20.974367
+CREATE TABLE auth_cas(
+    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on DATETIME,
+    service VARCHAR(512),
+    ticket VARCHAR(512),
+    renew CHAR(1),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-08-10T21:57:34.674767
+CREATE TABLE category(
+    id INT AUTO_INCREMENT NOT NULL,
+    category_title LONGTEXT,
+    craigslist LONGTEXT NOT NULL,
+    kijiji LONGTEXT NOT NULL,
+    usedeverywhere LONGTEXT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-08-10T21:57:35.473941
+CREATE TABLE location(
+    id INT AUTO_INCREMENT NOT NULL,
+    main_city LONGTEXT,
+    section_city LONGTEXT,
+    craigs_location LONGTEXT NOT NULL,
+    kijiji_location LONGTEXT NOT NULL,
+    used_url LONGTEXT NOT NULL,
+    craigs_url LONGTEXT NOT NULL,
+    kijiji_url LONGTEXT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-08-10T21:57:37.764399
+CREATE TABLE vancouver(
+    id INT AUTO_INCREMENT NOT NULL,
+    location_vancouver_id VARCHAR(512),
+    category_id VARCHAR(512),
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    adTitle VARCHAR(512) NOT NULL,
+    email VARCHAR(512) NOT NULL DEFAULT '',
+    phone_number VARCHAR(512) NOT NULL DEFAULT '',
+    adDesc LONGTEXT NOT NULL,
+    adPrice INT NOT NULL,
+    isAdValid INT,
+    dateCreated DATETIME NOT NULL DEFAULT '2014-08-10 21:57:37',
+    dateEnded DATETIME,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!

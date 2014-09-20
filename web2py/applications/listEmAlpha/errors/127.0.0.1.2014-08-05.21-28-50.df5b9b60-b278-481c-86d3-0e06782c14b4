@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S'<class \'gluon.contrib.pymysql.err.InternalError\'> (1050, u"Table \'vancouver\' already exists")'
+p3
+sS'layer'
+p4
+S'/Users/sepehrtaheri/PycharmProjects/listEmAlpha/web2py/applications/listemAlpha/models/db_vancouver.py'
+p5
+sS'code'
+p6
+S"import datetime\n\ndb.define_table('vancouver',\n                Field('location_vancouver_id'),  #, db.location_vancouver),\n                Field('category_id'),  #, db.category, notnull=True),\n                Field('user_id', db.auth_user, default=auth.user_id, writable=False, readable=False),\n                Field('adTitle', 'string', notnull=True),\n                Field('email', requires=IS_EMAIL(), notnull=True),\n                Field('phone_number', requires=IS_MATCH('[\\d\\-\\(\\) ]+'), notnull=True),\n                Field('adDesc', 'text', notnull=True),\n                Field('adPrice', 'integer', notnull=True),\n                Field('isAdValid', 'integer', requires=IS_INT_IN_RANGE(0, 2), default=1, writable=False, readable=False),\n                Field('dateCreated', 'datetime', notnull=True, writable=False, readable=False, default=datetime.datetime.now()),\n                Field('dateEnded', 'datetime'), migrate=True)\n"
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/Users/sepehrtaheri/PycharmProjects/listEmAlpha/web2py/gluon/restricted.py", line 220, in restricted\n    exec ccode in environment\n  File "/Users/sepehrtaheri/PycharmProjects/listEmAlpha/web2py/applications/listemAlpha/models/db_vancouver.py", line 14, in <module>\n    Field(\'dateEnded\', \'datetime\'), migrate=True)\n  File "/Users/sepehrtaheri/PycharmProjects/listEmAlpha/web2py/gluon/dal.py", line 8223, in define_table\n    table = self.lazy_define_table(tablename,*fields,**args)\n  File "/Users/sepehrtaheri/PycharmProjects/listEmAlpha/web2py/gluon/dal.py", line 8260, in lazy_define_table\n    polymodel=polymodel)\n  File "/Users/sepehrtaheri/PycharmProjects/listEmAlpha/web2py/gluon/dal.py", line 1104, in create_table\n    self.create_sequence_and_triggers(query,table)\n  File "/Users/sepehrtaheri/PycharmProjects/listEmAlpha/web2py/gluon/dal.py", line 1950, in create_sequence_and_triggers\n    self.execute(query)\n  File "/Users/sepehrtaheri/PycharmProjects/listEmAlpha/web2py/gluon/dal.py", line 1969, in execute\n    return self.log_execute(*a, **b)\n  File "/Users/sepehrtaheri/PycharmProjects/listEmAlpha/web2py/gluon/dal.py", line 1963, in log_execute\n    ret = self.cursor.execute(command, *a[1:], **b)\n  File "/Users/sepehrtaheri/PycharmProjects/listEmAlpha/web2py/gluon/contrib/pymysql/cursors.py", line 117, in execute\n    self.errorhandler(self, exc, value)\n  File "/Users/sepehrtaheri/PycharmProjects/listEmAlpha/web2py/gluon/contrib/pymysql/connections.py", line 202, in defaulterrorhandler\n    raise errorclass, errorvalue\nInternalError: (1050, u"Table \'vancouver\' already exists")\n'
+p11
+s.

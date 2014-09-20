@@ -61,17 +61,6 @@ mail.settings.server = 'logging' or 'smtp.gmail.com:587'
 mail.settings.sender = 'you@gmail.com'
 mail.settings.login = 'username:password'
 
-## Cloudinary CDN for Images
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-cloudinary.config(
-  cloud_name = "adexpress",
-  api_key = "924878893435153",
-  api_secret = "XyFdjTfzYK5cHAkMGBERFe8EMIM"
-)
-
-
 ## configure auth policy
 auth.settings.registration_requires_verification = False
 auth.settings.registration_requires_approval = False

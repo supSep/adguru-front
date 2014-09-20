@@ -18,6 +18,6 @@ db.define_table('vancouver',
                 Field('adPrice', 'integer', notnull=True),
                 Field('isAdValid', 'integer', requires=IS_INT_IN_RANGE(0, 2), default=1, writable=False, readable=False),
                 Field('dateCreated', 'datetime', notnull=True, writable=False, readable=False, default=datetime.datetime.now()),
-                Field('dateEnded', 'datetime'), migrate=True)
+                Field('dateEnded', 'datetime'), migrate=False)
 
 

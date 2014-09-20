@@ -134,6 +134,9 @@ def search():
     return dict(form=searchform)
     #return response.render('default/searchposts.html', context)
 
+def test():
+    return "SEPSEP"
+
 
 def searchposts(searchresults, count, form):
     return dict(results=searchresults, count=count, form=form)
@@ -182,4 +185,5 @@ def ask():
         else:
             form.errors.your_email = "Unable to send the email"
     return dict(form=form)
+
 

@@ -3,7 +3,7 @@
 
 from enum import Enum
 
-css_element = 'select'
+css_element = 'radio'
 
 
 class CraigslistLocation(Enum):

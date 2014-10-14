@@ -22,7 +22,7 @@ class KijCategory(Enum):
     home_outdoor = "CategoryId19"
     home_renovation_materials = "CategoryId727"
     iPods_mp3_headphones = "CategoryId767"
-    jewellery_watches = "CategoryId133"
+    jewelery_watches = "CategoryId133"
     musical_instruments = "CategoryId17"
     phones = "CategoryId134"
     sporting_goods_exercise = "CategoryId111"

@@ -6,4 +6,4 @@ db.define_table('location',
                 Field('used_url', 'text', notnull=True),
                 Field('craigs_url', 'text', notnull=True),
                 Field('kijiji_url', 'text', notnull=True),
-                Field('used_url', 'text', notnull=True), migrate=True)
+                Field('used_url', 'text', notnull=True), migrate=False)

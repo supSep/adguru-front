@@ -1,0 +1,25 @@
+from applications.listEmAlpha.models.category import PostCategory
+
+title_category_mapping = {
+"Antiques, Art & Collectibles" : PostCategory.antique_art_collectibles,
+"Appliances" : PostCategory.appliances,
+"Baby stuff" : PostCategory.baby_stuff,
+"Books" : PostCategory.books,
+"Blu-Rays, DVDs & CDs" : PostCategory.cd_dvd_bluray,
+"Cell Phones" : PostCategory.cell_phone,
+"Computers" : PostCategory.computers,
+"Electronics" : PostCategory.electronics,
+"Free Stuff" : PostCategory.free,
+"Furniture" : PostCategory.furniture,
+"Garage / Yard sales" : PostCategory.garage_yard_sale,
+"Home, Farm & Garden" : PostCategory.home_farm_garden,
+"Jewelry" : PostCategory.jewelry,
+"Motorvehicles : Cars, Trucks, Motorcycles & RVs" : PostCategory.motorvehicles_car_truck_rv,
+"Musical instruments & equipment" : PostCategory.musical_instruments,
+"Office, Commercial & Business" : PostCategory.office_business,
+"Pets" : PostCategory.pets,
+"Shoes, Clothes & Watches" : PostCategory.shoes_clothing_watches,
+"Sporting Goods" : PostCategory.sporting_goods,
+"Tickets" : PostCategory.tickets,
+"Toys & Games" : PostCategory.toys_games,
+"Video Gaming" : PostCategory.video_games }

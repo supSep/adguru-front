@@ -14,7 +14,7 @@ class PostCategory(Enum):
 
     baby_stuff = (
         CraigslistCategory.baby_kid_stuff,
-                  KijCategory.baby_items)
+        KijCategory.baby_items)
 
     books = (
         CraigslistCategory.books_magazines,
@@ -84,10 +84,36 @@ class PostCategory(Enum):
         CraigslistCategory.tickets,
         KijCategory.tickets)
 
-    toys_baby_stuff = (
+    toys_games = (
         CraigslistCategory.toy_games,
         KijCategory.toy_games)
 
     video_games = (
         CraigslistCategory.video_gaming,
         KijCategory.video_games_console)
+
+
+
+
+#antique_art_collectibles
+#appliances
+#baby_stuff
+#books
+#cd_dvd_bluray
+#cell_phone
+##computers
+#electronics
+#free
+#furniture
+#garage_yard_sale
+#home_farm_garden
+#jewelry
+#motorvehicles_car_truck_rv
+#musical_instruments
+##office_business
+#pets
+#shoes_clothing_watches
+#sporting_goods
+#tickets
+#toys_games
+#video_games

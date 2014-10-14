@@ -7,8 +7,7 @@ def postcl(form, zip):
     formpics = 0
     # Browse to Rap Genius
     browser = RoboBrowser(history=True)
-    browser.open(''
-                 'https://post.craigslist.org/c/van?lang=en')
+    browser.open('https://post.craigslist.org/c/van?lang=en')
 
     # db(db_category.location == form.category)
     # db(db_location.location == form.location)

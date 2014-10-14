@@ -147,7 +147,9 @@ def post():
     form = SQLFORM(db.vancouver, showid=False, hidden=dict(user_id=auth.user_id, isAdValid=1))
     if form.process().accepted:
         response.flash = 'form accepted'
-        createpost(form.vars)
+
+        scheduler.queue_task(createpost,pvars=dict(form=form.vars))
+
         # redirect url
         # send to ad posting controller
     elif form.errors:

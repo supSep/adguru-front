@@ -9,12 +9,18 @@
 ## - call exposes all registered services (none by default)
 #########################################################################
 
+import logging
+logger = logging.getLogger("web2py.app.listEmAlpha")
+logger.setLevel(logging.DEBUG)
+
 
 def index():
     if not auth.is_logged_in():
+        logger.info("Visited: index (not logged in)")
         response.flash = T("Welcome to web2py!")
         return dict(message=T('Hello World'))
     if auth.is_logged_in():
+        logger.info("Visited: index (logged in)")
         response.flash = T("")
         query = (db.vancouver)
         sortorder = [db.vancouver.dateCreated]
@@ -90,8 +96,10 @@ def profile():
     response.title = "User Profile"
     userId = request.vars['uid']
     if userId == None:
+        logger.info("Visited: profile (self's page)")
         query = (db.vancouver.user_id == auth.user.id)
     else:
+        logger.info("Visited: profile (else's page)")
         query = (db.vancouver.user_id == userId)
     sortorder = [db.vancouver.dateCreated]
     exportclasses=dict(
@@ -134,18 +142,17 @@ def search():
     return dict(form=searchform)
     #return response.render('default/searchposts.html', context)
 
-def test():
-    return "SEPSEP"
-
 
 def searchposts(searchresults, count, form):
     return dict(results=searchresults, count=count, form=form)
 
 @auth.requires_login()
 def post():
+    logger.info("Visited: Post (entered)")
     response.title = "Post an ExpressAd"
     form = SQLFORM(db.vancouver, showid=False, hidden=dict(user_id=auth.user_id, isAdValid=1))
     if form.process().accepted:
+        logger.info("Visited: Post (accepted)")
         response.flash = 'form accepted'
 
         scheduler.queue_task(createpost,pvars=dict(form=form.vars))
@@ -153,8 +160,10 @@ def post():
         # redirect url
         # send to ad posting controller
     elif form.errors:
+        logger.info("Visited: Post (errors)")
         response.flash = 'form has errors'
     else:
+        logger.info("Visited: Post (please fill)")
         response.flash = 'please fill out the form'
     return dict(form=form)
 
@@ -168,17 +177,20 @@ def createpost(form):
 def ask():
     response.title = "Ask a question"
     if  auth.is_logged_in():
+        logger.info("Visited: Post (logged in)")
         form=SQLFORM.factory(
             Field('your_email',default=auth.user.email, requires=IS_EMAIL(), readable=False, writable=False),
             Field('user', default=auth.user_id, readable=False, writable=False),
             Field('question',requires=IS_NOT_EMPTY()))
     else:
+        logger.info("Visited: Post (guest)")
         form=SQLFORM.factory(
             Field('name',requires=IS_NOT_EMPTY()),
             Field('your_email', requires=IS_EMAIL()),
             Field('question',requires=IS_NOT_EMPTY()))
 
     if form.process().accepted:
+        logger.info("Visited: Ask a question (accepted)")
         if mail.send(to='admin@example.com',
                   subject='from %s' % form.vars.your_email,
                   message = form.vars.question):

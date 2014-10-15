@@ -1,96 +1,96 @@
 from enum import Enum
-from applications.listEmAlpha.models.category import KijCategory
+from applications.listEmAlpha.models.category.KijCategory import KijCategory
 from applications.listEmAlpha.models.category.CraigslistCategory import CraigslistCategory
 
 
 class PostCategory(Enum):
-    antique_art_collectibles = (
+    antique_art_collectibles = dict(
         CraigslistCategory.antiques,
         KijCategory.art_collectibles)
 
-    appliances = (
+    appliances = dict(
         CraigslistCategory.appliances,
         KijCategory.home_appliances)
 
-    baby_stuff = (
+    baby_stuff = dict(
         CraigslistCategory.baby_kid_stuff,
         KijCategory.baby_items)
 
-    books = (
+    books = dict(
         CraigslistCategory.books_magazines,
         KijCategory.books)
 
-    cd_dvd_bluray = (
+    cd_dvd_bluray = dict(
         CraigslistCategory.cds_dvds_vhs,
-        KijCategory.cds_dvds_vhs)
+        KijCategory.cds_dvds_bluray )
 
-    cell_phone = (
+    cell_phone = dict(
         CraigslistCategory.cell_phones,
         KijCategory.electronics)
 
-    computers = (
+    computers = dict(
         CraigslistCategory.computers,
         KijCategory.computers)
 
-    electronics = (
+    electronics = dict(
         CraigslistCategory.electronics,
         KijCategory.electronics)
 
-    free = (
+    free = dict(
         CraigslistCategory.free_stuff,
         KijCategory.other)
 
-    furniture = (
+    furniture = dict(
         CraigslistCategory.furniture,
         KijCategory.furniture)
 
-    garage_yard_sale = (
+    garage_yard_sale = dict(
         CraigslistCategory,
         KijCategory)
 
-    home_farm_garden = (
+    home_farm_garden = dict(
         CraigslistCategory.farm_garden,
         KijCategory.home_outdoor)
 
-    jewelry = (
+    jewelry = dict(
         CraigslistCategory.jewelry,
-        KijCategory.jewelry_watches)
+        KijCategory.jewelery_watches)
 
-    motorvehicles_car_truck_rv = (
+    motorvehicles_car_truck_rv = dict(
         CraigslistCategory.cars_trucks,
         KijCategory.cars_trucks)
 
-    musical_instruments = (
+    musical_instruments = dict(
         CraigslistCategory.musical_instruments,
         KijCategory.musical_instruments)
 
-    office_business = (
-        CraigslistCategory.business_commericial,
+    office_business = dict(
+        CraigslistCategory.business_commercial,
         KijCategory.business_industrial)
 
-    pets = (
+    pets = dict(
         CraigslistCategory.general_sale,
         KijCategory.other)
 
-    shoes_clothing_watches = (
+    shoes_clothing_watches = dict(
         CraigslistCategory.clothing_accessories,
         KijCategory.clothing)
 
-    sporting_goods = (
+    sporting_goods = dict(
         CraigslistCategory.sporting_goods,
         KijCategory.sporting_goods_exercise)
 
-    tickets = (
+    tickets = dict(
         CraigslistCategory.tickets,
         KijCategory.tickets)
 
-    toys_games = (
-        CraigslistCategory.toy_games,
-        KijCategory.toy_games)
+    toys_games = dict(
+        CraigslistCategory.toys_games,
+        KijCategory.toys_games)
 
-    video_games = (
+    video_games = dict(
         CraigslistCategory.video_gaming,
-        KijCategory.video_games_console)
+        KijCategory.video_games_consoles)
 
 
 

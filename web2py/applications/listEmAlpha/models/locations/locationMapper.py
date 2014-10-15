@@ -1,4 +1,4 @@
-from applications.listEmAlpha.models.locations import PostLocation
+from applications.listEmAlpha.models.locations.PostLocation import PostLocation
 
 title_location_mapper = {
    "Burnaby & New Westminister" : PostLocation.burnaby_newwest,
@@ -7,4 +7,4 @@ title_location_mapper = {
     "Richmond":  PostLocation.richmond,
     "UBC" : PostLocation.ubc,
     "Vancouver" : PostLocation.vancouver,
-    "Tricities, Pitt Meadows & Maple Ridge" : PostLocation.tricities_pitt_maple}
+    "Tri-cities, Pitt Meadows & Maple Ridge" : PostLocation.tricities_pitt_maple}

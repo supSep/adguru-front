@@ -2,8 +2,28 @@ from enum import Enum
 
 css_element = 'radio'
 
-
+# @total_ordering
 class CraigslistCategory(Enum):
+    # def __eq__(self, other):
+    # return self.member_type() == other.member_type()
+    #
+    # def __lt__(self, other):
+    #     return self.member_type() < other.member_type()
+
+    # def __lt__(self, other):
+    #     if type(other) is self.__class__ and ( self.__class__ is CraigslistCategory):
+    #         assert isinstance(other, CraigslistCategory)
+    #         return self._value_ < other._value_
+    #
+    #
+    # def __eq__(self, other):
+    #     if type(other) is self.__class__:
+    #         return self is other
+    #     return NotImplemented
+
+    def __hash__(self):
+        return self.name.__hash__()
+
     antiques = "ata"
     appliances = "ppa"
     arts_crafts = "ara"

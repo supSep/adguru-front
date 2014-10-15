@@ -1,5 +1,7 @@
 from enum import Enum
 
+css_element = 'select'
+
 
 class KijCategory(Enum):
     art_collectibles = "CategoryId12"
@@ -31,7 +33,6 @@ class KijCategory(Enum):
     toys_games = "CategoryId108"
     video_games_consoles = "CategoryId141"
     other = "CategoryId26"
-
     cars_trucks = "CategoryId174"
     classic_cars = "CategoryId122"
     auto_parts_tires = "CategoryId31"

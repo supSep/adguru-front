@@ -1,4 +1,6 @@
 import datetime
+from applications.listEmAlpha.models.category.categoryMapper import title_category_mapper
+from applications.listEmAlpha.models.locations.locationMapper import title_location_mapper
 
 
 email=''
@@ -8,8 +10,8 @@ if(auth.is_logged_in()):
     phone=auth.user.phone
 
 db.define_table('vancouver',
-                Field('location_vancouver_id'),  #, db.location_vancouver),
-                Field('category_id'),  #, db.category, notnull=True),
+                Field('location_vancouver_id', requires=IS_IN_SET(title_location_mapper.keys(), zero=T('choose uno'))),
+                Field('category_id', requires=IS_IN_SET(title_category_mapper.keys(), zero=T('choose one') )),  #, db.category, notnull=True),
                 Field('user_id', db.auth_user, default=auth.user_id, writable=False, readable=False),
                 Field('adTitle', 'string', notnull=True),
                 Field('email',default=email, requires=IS_EMAIL(), notnull=True),

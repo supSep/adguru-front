@@ -4,6 +4,19 @@ css_element = 'select'
 
 
 class KijCategory(Enum):
+    # def __hash__(self):
+    #     return self.name.__hash__()
+    #
+    # def __lt__(self, other):
+    #     if type(other) is self.__class__ and ( self.__class__ is KijCategory):
+    #         assert isinstance(other, KijCategory)
+    #         return self._name_ < other._name_
+    #
+    # def __gt__(self, other):
+    #     if type(other) is self.__class__ and ( self.__class__ is KijCategory):
+    #         assert isinstance(other, KijCategory)
+    #         return self._name_ < other._name_
+
     art_collectibles = "CategoryId12"
     baby_items = "CategoryId253"
     bikes = "CategoryId644"

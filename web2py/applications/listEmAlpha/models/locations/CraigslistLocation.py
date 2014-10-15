@@ -16,6 +16,8 @@ class CraigslistLocation(Enum):
 #         if type(other) is self.__class__:
 #             return self is other
 #         return NotImplemented
+
+
     vancouver = 1
     northshore = 2
     burnaby_newwest = 3

@@ -1,6 +1,6 @@
-from applications.listEmAlpha.models.category import PostCategory
+from applications.listEmAlpha.models.category.PostCategory import PostCategory
 
-title_category_mapping = {
+title_category_map = {
     "Antiques, Art & Collectibles": PostCategory.antique_art_collectibles,
     "Appliances": PostCategory.appliances,
     "Baby stuff": PostCategory.baby_stuff,
@@ -24,26 +24,26 @@ title_category_mapping = {
     "Toys & Games": PostCategory.toys_games,
     "Video Gaming": PostCategory.video_games}
 
-    # title_category = (
-    #     "Antiques, Art & Collectibles",
-    #     "Appliances",
-    #     "Baby stuff",
-    #     "Books",
-    #     "Blu-Rays, DVDs & CDs",
-    #     "Cell Phones",
-    #     "Computers",
-    #     "Electronics",
-    #     "Free Stuff",
-    #     "Furniture",
-    #     "Garage / Yard sales",
-    #     "Home, Farm & Garden",
-    #     "Jewelry",
-    #     "Motorvehicles : Cars, Trucks, Motorcycles & RVs",
-    #     "Musical instruments & equipment",
-    #     "Office, Commercial & Business",
-    #     "Pets",
-    #     "Shoes, Clothes & Watches",
-    #     "Sporting Goods",
-    #     "Tickets",
-    #     "Toys & Games",
-    #     "Video Gaming" )
+title_category = (
+        "Antiques, Art & Collectibles",
+        "Appliances",
+        "Baby stuff",
+        "Books",
+        "Blu-Rays, DVDs & CDs",
+        "Cell Phones",
+        "Computers",
+        "Electronics",
+        "Free Stuff",
+        "Furniture",
+        "Garage / Yard sales",
+        "Home, Farm & Garden",
+        "Jewelry",
+        "Motorvehicles : Cars, Trucks, Motorcycles & RVs",
+        "Musical instruments & equipment",
+        "Office, Commercial & Business",
+        "Pets",
+        "Shoes, Clothes & Watches",
+        "Sporting Goods",
+        "Tickets",
+        "Toys & Games",
+        "Video Gaming")

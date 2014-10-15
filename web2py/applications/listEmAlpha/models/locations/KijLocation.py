@@ -7,6 +7,7 @@ css_element = 'select'
 
 
 class KijLocation(Enum):
+
     burnaby_newwest = 1700285
     delta_surrey_langley = 1700286
     downtown_westend = 1700287

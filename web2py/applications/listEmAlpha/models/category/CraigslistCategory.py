@@ -7,22 +7,34 @@ class CraigslistCategory(Enum):
     # def __eq__(self, other):
     # return self.member_type() == other.member_type()
     #
-    # def __lt__(self, other):
-    #     return self.member_type() < other.member_type()
-
+    #def __lt__(self, other):
+    #     assert other.__class__ == self.__class__
+    #     return self.classdict
     # def __lt__(self, other):
     #     if type(other) is self.__class__ and ( self.__class__ is CraigslistCategory):
     #         assert isinstance(other, CraigslistCategory)
-    #         return self._value_ < other._value_
+    #         return self._name_ < other._name_
+    # #
+    # #
+    # # def __eq__(self, other):
+    # #     if type(other) is self.__class__:
+    # #         return self is other
+    # #     return NotImplemented
+    # #
+    # def __hash__(self):
+    #     return self._name_.__hash__()
     #
-    #
-    # def __eq__(self, other):
-    #     if type(other) is self.__class__:
-    #         return self is other
-    #     return NotImplemented
+    # def __cmp__(self, other):
+    #     return cmp("%s" % (self._name_),
+    #                "%s" % (other._name_))
+    def __eq__(self,other):
+        return self.__hash__()==other.__hash__()
 
-    def __hash__(self):
+    def  __hash__(self):
         return self.name.__hash__()
+
+    def __iter__(self):
+        return vars(self).iteritems()
 
     antiques = "ata"
     appliances = "ppa"

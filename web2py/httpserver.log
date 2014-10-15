@@ -6334,3 +6334,7 @@
 127.0.0.1, 2014-10-14 23:09:05, GET, /listemAlpha/static/fonts/glyphicons-halflings-regular.woff, HTTP/1.1, 304, 0.000435
 127.0.0.1, 2014-10-14 23:10:15, GET, /listemAlpha/default/user/login, HTTP/1.1, 200, 1.968591
 127.0.0.1, 2014-10-14 23:10:36, GET, /listemAlpha/default/post, HTTP/1.1, 200, 1.865497
+127.0.0.1, 2014-10-14 23:12:16, GET, /listemAlpha/default/index, HTTP/1.1, 500, 1.547920
+127.0.0.1, 2014-10-14 23:12:16, GET, /favicon.ico, HTTP/1.1, 400, 0.000304
+127.0.0.1, 2014-10-14 23:12:18, GET, /admin/default/ticket/listemAlpha/127.0.0.1.2014-10-14.23-12-14.b9d4aba6-99e0-405b-b311-2226cf4d4ab7, HTTP/1.1, 200, 0.111952
+127.0.0.1, 2014-10-14 23:12:19, GET, /favicon.ico, HTTP/1.1, 400, 0.000436

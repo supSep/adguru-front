@@ -104,7 +104,7 @@ routers = dict(
 
     # base router
     BASE=dict(
-        default_application='listEmAlpha',
+        default_application='adguru',
     ),
 )
 

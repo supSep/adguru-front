@@ -1,1 +1,0 @@
-export PYTHONPATH=$PYTHONPATH:/Users/sepehrtaheri/PycharmProjects/listEmAlpha/web2py/applications/listEmAlpha/modules/

@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<class 'gluon.contrib.pymysql.err.IntegrityError'> (1215, u'Cannot add foreign key constraint')"
+p3
+sS'layer'
+p4
+S'/Users/sepehrtaheri/PycharmProjects/adguru/web2py/applications/adguru/models/db_van_form.py'
+p5
+sS'code'
+p6
+S"# in file: models/db_custom.py\n# db.define_table('company',\n#Field('name', notnull=True, unique=True),format='%(name)s')\ndb.define_table('vancouver',\n                Field('category_id', db.category, notnull=True),  # fill database and add db.van_cat\n                Field('location_vancouver_id', notnull=True),  # fill database and add db.van_cat\n                Field('endUserId'),  # db.vancouverEUID),\n                Field('adTitle', 'text', notnull=True),\n                Field('email', requires=IS_EMAIL(), notnull=True),\n                Field('phone_number', requires=IS_MATCH('[\\d\\-\\(\\) ]+'), notnull=True),\n                Field('adDesc', 'text', notnull=True),\n                Field('adPrice', notnull=True),\n                Field('isAdValid', 'boolean'),\n                Field('dateCreated', 'datetime', notnull=True),\n                Field('dateEnded', 'datetime'), migrate=True)\n#db.define_table('log',\n#Field('body', 'text',notnull=True),\n#Field('posted_on', 'datetime'),\n#Field('contact', 'reference contact'))\n"
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/Users/sepehrtaheri/PycharmProjects/adguru/web2py/gluon/restricted.py", line 220, in restricted\n    exec ccode in environment\n  File "/Users/sepehrtaheri/PycharmProjects/adguru/web2py/applications/adguru/models/db_van_form.py", line 15, in <module>\n    Field(\'dateEnded\', \'datetime\'), migrate=True)\n  File "/Users/sepehrtaheri/PycharmProjects/adguru/web2py/gluon/dal.py", line 8223, in define_table\n    table = self.lazy_define_table(tablename,*fields,**args)\n  File "/Users/sepehrtaheri/PycharmProjects/adguru/web2py/gluon/dal.py", line 8260, in lazy_define_table\n    polymodel=polymodel)\n  File "/Users/sepehrtaheri/PycharmProjects/adguru/web2py/gluon/dal.py", line 1104, in create_table\n    self.create_sequence_and_triggers(query,table)\n  File "/Users/sepehrtaheri/PycharmProjects/adguru/web2py/gluon/dal.py", line 1950, in create_sequence_and_triggers\n    self.execute(query)\n  File "/Users/sepehrtaheri/PycharmProjects/adguru/web2py/gluon/dal.py", line 1969, in execute\n    return self.log_execute(*a, **b)\n  File "/Users/sepehrtaheri/PycharmProjects/adguru/web2py/gluon/dal.py", line 1963, in log_execute\n    ret = self.cursor.execute(command, *a[1:], **b)\n  File "/Users/sepehrtaheri/PycharmProjects/adguru/web2py/gluon/contrib/pymysql/cursors.py", line 117, in execute\n    self.errorhandler(self, exc, value)\n  File "/Users/sepehrtaheri/PycharmProjects/adguru/web2py/gluon/contrib/pymysql/connections.py", line 202, in defaulterrorhandler\n    raise errorclass, errorvalue\nIntegrityError: (1215, u\'Cannot add foreign key constraint\')\n'
+p11
+s.

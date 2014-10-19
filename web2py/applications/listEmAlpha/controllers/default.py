@@ -2,14 +2,16 @@
 # this file is released under public domain and you can use without limitations
 
 # ########################################################################
-## This is a sample controller
+# # This is a sample controller
 ## - index is the default action of any application
 ## - user is required for authentication and authorization
 ## - download is for downloading files uploaded in the db (does streaming)
 ## - call exposes all registered services (none by default)
 #########################################################################
+import json
 
 import logging
+
 logger = logging.getLogger("web2py.app.listEmAlpha")
 logger.setLevel(logging.DEBUG)
 
@@ -24,17 +26,17 @@ def index():
         response.flash = T("")
         query = (db.vancouver)
         sortorder = [db.vancouver.dateCreated]
-        exportclasses=dict(
-                csv_with_hidden_cols=False,
-                xml=False,
-                html=False,
-                csv=False,
-                json=False,
-                tsv_with_hidden_cols=False,
-                tsv=False)
+        exportclasses = dict(
+            csv_with_hidden_cols=False,
+            xml=False,
+            html=False,
+            csv=False,
+            json=False,
+            tsv_with_hidden_cols=False,
+            tsv=False)
         ads = SQLFORM.grid(query=query, deletable=False, editable=False,
                            orderby=sortorder, paginate=10, exportclasses=exportclasses, maxtextlength=64)
-        return dict( content=ads)
+        return dict(content=ads)
 
 
 def user():
@@ -91,6 +93,7 @@ def data():
     """
     return dict(form=crud())
 
+
 @auth.requires_login()
 def profile():
     response.title = "User Profile"
@@ -102,14 +105,14 @@ def profile():
         logger.info("Visited: profile (else's page)")
         query = (db.vancouver.user_id == userId)
     sortorder = [db.vancouver.dateCreated]
-    exportclasses=dict(
-            csv_with_hidden_cols=False,
-            xml=False,
-            html=False,
-            csv=False,
-            json=False,
-            tsv_with_hidden_cols=False,
-            tsv=False)
+    exportclasses = dict(
+        csv_with_hidden_cols=False,
+        xml=False,
+        html=False,
+        csv=False,
+        json=False,
+        tsv_with_hidden_cols=False,
+        tsv=False)
     ads = SQLFORM.grid(query=query, deletable=False, editable=False,
                        orderby=sortorder, paginate=25, exportclasses=exportclasses, maxtextlength=64)
     return dict(form=ads, user=auth.user)
@@ -120,25 +123,28 @@ def search():
     #response.view = 'default/searchposts.html'
     response.flash = 'search submitted'
     searchform = SQLFORM.factory(
-                  Field("searchbhar"),
-                  formstyle='divs',
-                  submit_button="Search").process()
+        Field("searchbhar"),
+        formstyle='divs',
+        submit_button="Search").process()
     query = db.vancouver.isAdValid == 1
-    print "SEARCHING"
-    print searchform.vars.searchbhar
+    print("SEARCHING")
+    print(searchform.vars.searchbhar)
     if searchform.accepted:
-        print 'aCCEPte2'
-    if(searchform.vars.searchbhar != '' and searchform.vars.searchbhar !=  None):
-        print "ACCEPTED"
+        print
+        'aCCEPte2'
+    if (searchform.vars.searchbhar != '' and searchform.vars.searchbhar != None):
+        print
+        "ACCEPTED"
         keywordvars = searchform.vars.searchbhar
         keywords = keywordvars.split(" ")
         for searchkey in keywords:
             query |= db.vancouver.adTitle.contains(searchkey)
             query |= db.vancouver.adDesc.contains(searchkey)
         count = db(query).count()
-        searchresults = db(query).select(db.vancouver.dateCreated, db.vancouver.location_vancouver_id, db.vancouver.category_id,
-                                     db.vancouver.adTitle, db.vancouver.adPrice, orderby=~db.vancouver.dateCreated)
-        redirect(URL('default',  'searchresults', vars={searchresults, count, searchform}), client_side=True)
+        searchresults = db(query).select(db.vancouver.dateCreated, db.vancouver.location_vancouver_id,
+                                         db.vancouver.category_id,
+                                         db.vancouver.adTitle, db.vancouver.adPrice, orderby=~db.vancouver.dateCreated)
+        redirect(URL('default', 'searchresults', vars={searchresults, count, searchform}), client_side=True)
     return dict(form=searchform)
     #return response.render('default/searchposts.html', context)
 
@@ -146,16 +152,18 @@ def search():
 def searchposts(searchresults, count, form):
     return dict(results=searchresults, count=count, form=form)
 
+
 @auth.requires_login()
 def post():
     logger.info("Visited: Post (entered)")
     response.title = "Post an ExpressAd"
-    form = SQLFORM(db.vancouver, showid=False, hidden=dict(user_id=auth.user_id, isAdValid=1))
+    form = SQLFORM\
+        (db.vancouver, showid=False, hidden=dict(user_id=auth.user_id, isAdValid=1))
     if form.process().accepted:
         logger.info("Visited: Post (accepted)")
         response.flash = 'form accepted'
 
-        scheduler.queue_task(createpost,pvars=dict(form=form.vars))
+        createpost(dict(form.vars))
 
         # redirect url
         # send to ad posting controller
@@ -169,31 +177,44 @@ def post():
 
 
 def createpost(form):
-    from applications.listEmAlpha.modules.vancouver_poster import post
-    post(form, auth.user['zip'])
-    return form
+    import requests
+    posturl = 'http://localhost:5000/vancouver/post/'
+    headers = {'content-type': 'application/json'}
+    payload  = {
+        'id': form['id'],
+        'category': form['category_id'],
+        'location': form['location_vancouver_id'],
+        'title' : form['adTitle'],
+        'email': form['email'],
+        'phone': form['phone_number'],
+        'description': form['adDesc'],
+        'price': form['adPrice']
+    }
+    response = requests.post(posturl, data=json.dumps(payload), headers=headers)
+    print response.text
+    return response.text
 
 
 def ask():
     response.title = "Ask a question"
-    if  auth.is_logged_in():
+    if auth.is_logged_in():
         logger.info("Visited: Post (logged in)")
-        form=SQLFORM.factory(
-            Field('your_email',default=auth.user.email, requires=IS_EMAIL(), readable=False, writable=False),
+        form = SQLFORM.factory(
+            Field('your_email', default=auth.user.email, requires=IS_EMAIL(), readable=False, writable=False),
             Field('user', default=auth.user_id, readable=False, writable=False),
-            Field('question',requires=IS_NOT_EMPTY()))
+            Field('question', requires=IS_NOT_EMPTY()))
     else:
         logger.info("Visited: Post (guest)")
-        form=SQLFORM.factory(
-            Field('name',requires=IS_NOT_EMPTY()),
+        form = SQLFORM.factory(
+            Field('name', requires=IS_NOT_EMPTY()),
             Field('your_email', requires=IS_EMAIL()),
-            Field('question',requires=IS_NOT_EMPTY()))
+            Field('question', requires=IS_NOT_EMPTY()))
 
     if form.process().accepted:
         logger.info("Visited: Ask a question (accepted)")
         if mail.send(to='admin@example.com',
-                  subject='from %s' % form.vars.your_email,
-                  message = form.vars.question):
+                     subject='from %s' % form.vars.your_email,
+                     message=form.vars.question):
             response.flash = 'Thank you'
             response.js = "jQuery('#%s').hide()" % request.cid
         else:

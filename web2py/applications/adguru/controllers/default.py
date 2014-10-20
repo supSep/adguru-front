@@ -11,6 +11,7 @@
 import json
 
 import logging
+from applications.adguru.modules.restful_services import createpost
 
 logger = logging.getLogger("web2py.app.adguru")
 logger.setLevel(logging.DEBUG)
@@ -176,25 +177,6 @@ def post():
         logger.info("Visited: Post (please fill)")
         response.flash = 'please fill out the form'
     return dict(form=form)
-
-
-def createpost(form):
-    import requests
-    posturl = 'http://localhost:5000/vancouver/post/'
-    headers = {'content-type': 'application/json'}
-    payload  = {
-        'id': form['id'],
-        'category': form['category_id'],
-        'location': form['location_vancouver_id'],
-        'title' : form['adTitle'],
-        'email': form['email'],
-        'phone': form['phone_number'],
-        'description': form['adDesc'],
-        'price': form['adPrice']
-    }
-    response = requests.post(posturl, data=json.dumps(payload), headers=headers)
-    print response.text
-    return response.text
 
 
 def ask():

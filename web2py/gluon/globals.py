@@ -684,6 +684,10 @@ class Response(Storage):
             SCRIPT("jQuery('.hidden').hide()"), _id="totop-%s" % u
         )
 
+    @property
+    def vars(self):
+        return self._vars
+
 
 class Session(Storage):
     """

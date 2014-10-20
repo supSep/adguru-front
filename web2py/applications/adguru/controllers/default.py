@@ -25,18 +25,20 @@ def index():
         logger.info("Visited: index (logged in)")
         response.flash = T("")
         query = (db.vancouver)
-        sortorder = [db.vancouver.dateCreated]
-        exportclasses = dict(
-            csv_with_hidden_cols=False,
-            xml=False,
-            html=False,
-            csv=False,
-            json=False,
-            tsv_with_hidden_cols=False,
-            tsv=False)
-        ads = SQLFORM.grid(query=query, deletable=False, editable=False,
-                           orderby=sortorder, paginate=10, exportclasses=exportclasses, maxtextlength=64)
-        return dict(content=ads)
+        sortorder = [~db.vancouver.dateCreated] # tilde --> reverse order
+        columns = ['db.vancouver.adPrice','db.vancouver.adTitle', 'db.vancouver.location_vancouver_id', 'db.vancouver.category_id']
+        headers = {
+            'vancouver.adPrice':'Price',
+            'vancouver.adTitle':'Title',
+            'vancouver.location_vancouver_id':'Location',
+            'vancouver.category_id':'Category',
+
+
+            }
+        rows = db(query).select(db.vancouver.adPrice,db.vancouver.adTitle, db.vancouver.location_vancouver_id, db.vancouver.category_id,
+                                    orderby=sortorder, limitby=(0, 10))
+        result = SQLTABLE(rows, headers=headers, _width='%80', _class='table table-hover table-condensed')
+        return dict(content=result)
 
 
 def user():
@@ -132,7 +134,7 @@ def search():
     if searchform.accepted:
         print
         'aCCEPte2'
-    if (searchform.vars.searchbhar != '' and searchform.vars.searchbhar != None):
+    if searchform.vars.searchbhar != '' and searchform.vars.searchbhar != None:
         print
         "ACCEPTED"
         keywordvars = searchform.vars.searchbhar
